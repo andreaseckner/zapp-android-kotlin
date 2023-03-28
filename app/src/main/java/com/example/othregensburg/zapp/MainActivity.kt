@@ -1,22 +1,29 @@
 package com.example.othregensburg.zapp
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    // TODO (3) Create a String constant TAG to store the name of the class
-    // Hint: Kotlin does not have static variables. You could make use of a companion object.
+    companion object {
+        private val TAG: String? = MainActivity::class.simpleName
+    }
 
-    // TODO (4) Declare a property for the button
+    private lateinit var helloWorldButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO (5) Assign the button from the layout to the class property
+        helloWorldButton = findViewById(R.id.hello_world_button)
 
-        // TODO (6) Create an anonymous OnClickListener and assign it to the button
-        // TODO (7) Log a message with the given TAG property and String "Hello World"
+        helloWorldButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                Log.d(TAG, "Hello World!")
+            }
+        })
     }
 }
